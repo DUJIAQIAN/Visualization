@@ -1,0 +1,72 @@
+<!doctype html> 
+ <html> 
+     <head> 
+         <meta charset="utf-8">
+         <title>my first AmCharts</title>
+         <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+         <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+         <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+         <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+          <link rel="stylesheet" href="AmCss.css">
+         
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     </head>
+     <body>
+         <div id="chartdiv"></div>
+       
+         <script>
+                  
+                var tab=[];
+
+               // var dic_name_number = {}; // 定义一个字典
+                var dic_name={};
+                var a=2004,b=12;
+             
+             for(var i=0;i<2;i++){
+                 var dic=
+                     {"annee": a,
+                      "number":b   
+                     }
+                 tab.push(dic);
+                 a=2010;
+                 b=10;
+                 
+             }
+                 dic_name["jiaqian"]=tab;     
+                console.log(tab);
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "serial",
+  "theme": "light",
+  "dataProvider": tab,
+  "gridAboveGraphs": true,
+  "startDuration": 1,
+  "graphs": [ {
+    "balloonText": "[[category]]: <b>[[value]]</b>",
+    "fillAlphas": 0.8,
+    "lineAlpha": 0.2,
+    "type": "column",
+    "valueField": "number"
+  } ],
+  "chartCursor": {
+    "categoryBalloonEnabled": false,
+    "cursorAlpha": 0,
+    "zoomable": false
+  },
+  "categoryField": "annee",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "gridAlpha": 0,
+    "tickPosition": "start",
+    "tickLength": 20
+  },
+  "export": {
+    "enabled": true
+  }
+
+} );
+
+         </script>
+     
+     </body>
+</html>
